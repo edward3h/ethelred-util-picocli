@@ -6,6 +6,10 @@ plugins {
 
 allprojects {
 	apply plugin: "com.diffplug.spotless"
+
+	group = "org.ethelred"
+	version = '0.1'
+	
 	spotless {
 		format 'misc', {
 			target '*.md', '.gitignore'
