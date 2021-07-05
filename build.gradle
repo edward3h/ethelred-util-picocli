@@ -9,7 +9,7 @@ allprojects {
 
 	group = "org.ethelred"
 	version = '0.1'
-	
+
 	spotless {
 		format 'misc', {
 			target '*.md', '.gitignore'

@@ -5,7 +5,7 @@ plugins {
 
 	// Apply the java-library plugin for API and implementation separation.
 	id 'java-library'
-    id 'maven-publish'
+	id 'maven-publish'
 }
 
 repositories {
@@ -36,26 +36,26 @@ tasks.named('test') {
 }
 
 publishing {
-    publications {
-        maven(MavenPublication) {
-            artifactId = 'util-picocli'
+	publications {
+		maven(MavenPublication) {
+			artifactId = 'util-picocli'
 
-            from components.java
+			from components.java
 
-            pom {
-                url = 'https://github.com/edward3h/ethelred-util-picocli'
-            }
-        }
-    }
+			pom {
+				url = 'https://github.com/edward3h/ethelred-util-picocli'
+			}
+		}
+	}
 
-    repositories {
-    maven {
-      name = "GitHubPackages"
-      url = "https://maven.pkg.github.com/edward3h/ethelred-util-picocli"
-      credentials {
-        username = System.getenv("GITHUB_ACTOR")
-        password = System.getenv("GITHUB_TOKEN")
-      }
-    }
-  }
+	repositories {
+		maven {
+			name = "GitHubPackages"
+			url = "https://maven.pkg.github.com/edward3h/ethelred-util-picocli"
+			credentials {
+				username = System.getenv("GITHUB_ACTOR")
+				password = System.getenv("GITHUB_TOKEN")
+			}
+		}
+	}
 }
