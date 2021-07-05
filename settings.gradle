@@ -1,3 +1,4 @@
 
 rootProject.name = 'ethelred-util-picocli'
 include('lib')
+include('examples')

@@ -1,0 +1,16 @@
+= Picocli Utils
+
+Just my small library of common things I want to do with https://picocli.info/[picocli].
+
+== EnvironmentDefaultValueProvider
+
+Use this default value provider to read option values from environment variables.
+Environment variable names start with the application name, followed by the longest name of the relevant option,
+with letters uppercase and non-word characters replaced by underscores.
+
+e.g. Application "foo" with option "--my-option" will use environment "FOO_MY_OPTION".
+
+[source,java]
+----
+include::examples/src/main/java/org/ethelred/util/picocli/examples/ExampleApp.java[]
+----
