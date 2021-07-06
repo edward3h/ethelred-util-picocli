@@ -6,6 +6,7 @@ plugins {
 	// Apply the java-library plugin for API and implementation separation.
 	id 'java-library'
 	id 'maven-publish'
+	id 'signing'
 }
 
 repositories {
@@ -35,6 +36,11 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
+java {
+	withJavadocJar()
+	withSourcesJar()
+}
+
 publishing {
 	publications {
 		maven(MavenPublication) {
@@ -43,7 +49,26 @@ publishing {
 			from components.java
 
 			pom {
+				name = 'Ethelred Picocli Util'
+				description = 'Utility classes to work with Picocli.'
 				url = 'https://github.com/edward3h/ethelred-util-picocli'
+				licenses {
+					license {
+						name = 'GNU General Public License, Version 3'
+						url = 'https://choosealicense.com/licenses/gpl-3.0/'
+					}
+				}
+				developers {
+					developer {
+						name = 'Edward Harman'
+						email = 'jaq@ethelred.org'
+					}
+				}
+				scm {
+					connection = "https://github.com/edward3h/ethelred-util-picocli.git"
+					developerConnection = "git@github.com:edward3h/ethelred-util-picocli.git"
+					url = "https://github.com/edward3h/ethelred-util-picocli"
+				}
 			}
 		}
 	}
@@ -53,9 +78,30 @@ publishing {
 			name = "GitHubPackages"
 			url = "https://maven.pkg.github.com/edward3h/ethelred-util-picocli"
 			credentials {
-				username = System.getenv("GITHUB_ACTOR")
-				password = System.getenv("GITHUB_TOKEN")
+				username = findProperty('github.user') ?:  System.getenv("GITHUB_ACTOR")
+				password = findProperty('github.token') ?:  System.getenv("GITHUB_TOKEN")
 			}
 		}
+		maven {
+			name = "OSSRH"
+			url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+			credentials {
+				username = findProperty('ossrhUsername') ?: System.getenv("MAVEN_USERNAME")
+				password = findProperty('ossrhPassword') ?: System.getenv("MAVEN_PASSWORD")
+			}
+		}
+	}
+}
+
+signing {
+	def signingKey = findProperty("signingKey")
+	def signingPassword = findProperty("signingPassword")
+	useInMemoryPgpKeys(signingKey, signingPassword)
+	sign publishing.publications.maven
+}
+
+javadoc {
+	if(JavaVersion.current().isJava9Compatible()) {
+		options.addBooleanOption('html5', true)
 	}
 }

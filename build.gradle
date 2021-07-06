@@ -8,7 +8,7 @@ allprojects {
 	apply plugin: "com.diffplug.spotless"
 
 	group = "org.ethelred"
-	version = '0.1'
+	version = '0.1.2'
 
 	spotless {
 		format 'misc', {
@@ -29,5 +29,5 @@ allprojects {
 }
 
 gitHooks {
-	hooks = ['pre-commit': 'spotlessApply build']
+	hooks = ['pre-commit': 'build']
 }
