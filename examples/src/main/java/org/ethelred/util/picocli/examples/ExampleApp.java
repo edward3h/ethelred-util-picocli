@@ -19,6 +19,7 @@ public class ExampleApp implements Runnable {
         new CommandLine(new ExampleApp()).execute(args);
     }
 
+    @Override
     public void run() {
         System.out.println("My option was " + myOption);
     }
