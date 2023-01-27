@@ -5,10 +5,11 @@
 build
 bin
 
-# Eclipse/VScode generated
+# Eclipse/Idea/VScode generated
 .project
 .classpath
 .settings
+.idea
 
 # ?
 gng.cfg
