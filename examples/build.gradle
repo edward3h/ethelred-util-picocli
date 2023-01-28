@@ -8,5 +8,5 @@ repositories {
 
 dependencies {
 	implementation project(':lib')
-	implementation 'info.picocli:picocli:4.6.1'
+	implementation 'info.picocli:picocli:4.7.0'
 }

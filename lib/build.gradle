@@ -22,7 +22,7 @@ dependencies {
 	testImplementation 'org.spockframework:spock-core:2.0-groovy-3.0'
 	testImplementation 'junit:junit:4.13.2'
 
-	api 'info.picocli:picocli:4.6.1'
+	api 'info.picocli:picocli:4.7.0'
 }
 
 tasks.named('test') {
