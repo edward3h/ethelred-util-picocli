@@ -1,6 +1,5 @@
 package org.ethelred.util.picocli.defaults;
 
-import com.google.common.annotations.VisibleForTesting;
 import java.util.function.Function;
 import picocli.CommandLine.IDefaultValueProvider;
 import picocli.CommandLine.Model.ArgSpec;
@@ -9,7 +8,6 @@ import picocli.CommandLine.Model.OptionSpec;
 
 public class EnvironmentDefaultValueProvider implements IDefaultValueProvider {
 
-    @VisibleForTesting
     protected static Function<String, String> envLoader = System::getenv;
 
     @Override
