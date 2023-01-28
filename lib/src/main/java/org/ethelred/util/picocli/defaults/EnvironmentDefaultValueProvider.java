@@ -15,18 +15,13 @@ public class EnvironmentDefaultValueProvider implements IDefaultValueProvider {
         if (argSpec.isOption()) {
             OptionSpec option = (OptionSpec) argSpec;
             CommandSpec command = option.command();
-            String name = _normalize(
-                command.name() + "-" + option.longestName()
-            );
+            String name = _normalize(command.name() + "-" + option.longestName());
             return envLoader.apply(name);
         }
         return null;
     }
 
     private String _normalize(String input) {
-        return input
-            .toUpperCase()
-            .replaceAll("^\\W*", "")
-            .replaceAll("\\W+", "_");
+        return input.toUpperCase().replaceAll("^\\W*", "").replaceAll("\\W+", "_");
     }
 }
