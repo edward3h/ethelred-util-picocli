@@ -1,5 +1,7 @@
 = Picocli Utils
 
+_Functionality moved to https://github.com/edward3h/ethelred_util[ethelred_util]._
+
 Just my small library of common things I want to do with https://picocli.info/[picocli].
 
 == EnvironmentDefaultValueProvider
